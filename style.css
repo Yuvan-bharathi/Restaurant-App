@@ -88,7 +88,7 @@ body.dark-mode {
 #restaurant-details {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distributes space between paragraph and logo */
+    justify-content: center; /* Distributes space between paragraph and logo */
     padding: 20px;
     margin-bottom: 20px;
     background-color: var(--card-background);
@@ -99,13 +99,14 @@ body.dark-mode {
 
 #restaurant-details p {
     flex-grow: 1; /* Allows paragraph to take available space */
-    max-width: 70%; /* Limits paragraph width */
-    margin-right: 20px; /* Space between paragraph and logo */
-    line-height: 1.6; /* Improve readability */
+    max-width: 50%; /* Limits paragraph width */
+    margin-right: 0px; /* Space between paragraph and logo */
+    line-height: 1.5; /* Improve readability */
+    font-size: 22.5px;
 }
 
 #restaurant-logo {
-    max-height: 50px; /* Max height for the logo */
+    max-height: 250px; /* Max height for the logo */
     width: auto; /* Maintain aspect ratio */
     flex-shrink: 0; /* Prevent logo from shrinking if space is tight */
 }

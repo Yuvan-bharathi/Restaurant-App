@@ -48,18 +48,21 @@ img {
     --font-size-h3: 1.5rem;
 }
 
-/* Dark Mode Variable Overrides (can be populated later if dark mode is re-implemented) */
+/* Dark Mode Variable Overrides */
 body.dark-mode {
-    /* --primary-color: #ff8a80; */
-    /* --secondary-color: #bbb; */
-    /* --light-color: #222; */
-    /* --dark-color: #fff; */
-    /* --text-color: #f0f0f0; */
-    /* --background-color: #121212; */
-    /* --card-background: #1e1e1e; */
-    /* --footer-background: #1e1e1e; */
-    /* --footer-text-color: #f0f0f0; */
-    /* --button-hover-color: #ff6f61; */
+    --primary-color: #ff8a80; /* Lighter shade for dark mode */
+    --secondary-color: #bbb;
+    --light-color: #222; /* Background becomes dark */
+    --dark-color: #fff;  /* Text becomes light */
+    --text-color: #f0f0f0;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --footer-background: #1e1e1e; /* Or var(--card-background) if same */
+    --footer-text-color: #f0f0f0;
+    --button-hover-color: #ff6f61; /* This might need adjustment if base primary changed significantly */
+    /* Add any other variables that need overriding for dark mode */
+    /* For example, border colors if they are defined as variables */
+    /* --border-color: #444; (example) */
 }
 
 /* Basic app wrapper for consistent width and centering */

@@ -7,58 +7,136 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Louiss</h1>
-        <section class="controls">
-            <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
-            <select id="filter" aria-label="Filter food items by category">
-                <option value="all">All</option>
-                <option value="pizza">Pizza</option>
-                <option value="burger">Burger</option>
-                <option value="sushi">Sushi</option>
-            </select>
-        </section>
-        <div class="header-controls">
-            <div class="cart-icon">
-                <a href="cart.html">
-                    <img src="images/cart.png" alt="Cart">
-                    <span id="cart-count">0</span>
-                </a>
-            </div>
-            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
-        </div>
-    </header>
-    <div class="app-wrapper">
-        <section id="restaurant-details">
-            <p>Louiss is a family-owned restaurant that has been serving delicious food for over 20 years. We are passionate about using fresh, locally-sourced ingredients to create memorable dining experiences.</p>
-            <img src="images/cart.png" alt="Restaurant Logo" id="restaurant-logo">
-        </section>
-        <main id="food-items">
-            <!-- Food items will be displayed here -->
-        </main>
-        <section id="testimonials">
-            <div class="container">
-                <h2>What Our Customers Say</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p class="quote">"This is the best food delivery service I've ever used! The Margherita Pizza was fantastic."</p>
-                        <p class="author">- Alex P.</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="quote">"Quick delivery and the food (Cheeseburger) was still hot and delicious. Highly recommend!"</p>
-                        <p class="author">- Maria S.</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="quote">"Amazing sushi platter! Fresh and beautifully presented. Will order again soon."</p>
-                        <p class="author">- Kenji T.</p>
+    <div id="app-wrapper"> <!-- Re-adding app-wrapper as it was a useful container -->
+        <header>
+            <div class="navbar-main">
+                <div class="navbar-left">
+                    <a href="index.html" id="logo-link">
+                        <img src="images/cart.png" alt="Louiss Logo" id="navbar-logo">
+                    </a>
+                </div>
+                <nav class="navbar-middle">
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="#" class="nav-link">Contact Us</a>
+                </nav>
+                <div class="navbar-right">
+                    <a href="#reservation" class="nav-button reservation-button">Reservation</a>
+                    <div class="header-controls">
+                        <div class="cart-icon">
+                            <a href="cart.html">
+                                <img src="images/cart.png" alt="Cart">
+                                <span id="cart-count">0</span>
+                            </a>
+                        </div>
+                        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
+        <main id="landing-page-content">
+            <section id="hero">
+                <div class="hero-image-container">
+                    <img src="images/Margherita-Pizza.png" alt="Restaurant Ambiance">
+                </div>
+                <div class="hero-text-container">
+                    <h1>WELCOME TO LOWISS</h1>
+                    <h2>A tribute to the warm Mediterranean lands enriched with delicious Lebanese, Moroccan, and Greek flavors</h2>
+                    <p>The Maffei, “The Fine Artisan Kitchen,” offers an array of dishes, sourcing the finest fresh produce and seasonally acquired ingredients to create an unforgettable culinary experience with its world-class international chef. The beautifully marinated olives, feta cheese, the aroma of Moroccan spices, sumac, and fresh rosemary with the tasty olive oil will take you on a food journey you will remember forever! Lowis cuisine takes inspiration from the warm Mediterranean lands, particularly culturally enriched and delicious Lebanese, Moroccan and Greek cuisine.</p>
+                </div>
+            </section>
+            <section id="cuisine-intro">
+                <h2>Enjoy luscious global cuisines and taste flavors from all around the Mediterranean region!</h2>
+                <p>At Maffei, you can enjoy an extensive menu from 11.30 am, seven days a week! From a quick Turkish coffee, a bite to eat at lunch, or a deliciously crafted dinner, we do it all. You can also enjoy an impressive wine list and an exquisite range of cocktails. Maffei Kitchen aims to create an authentic cuisine experience, showcasing seasonal dishes historically driven by culinary methods.</p>
+                <div class="button-container">
+                    <a href="menu.html" class="go-to-menu-btn">Go to Menu</a>
+                </div>
+                <div class="food-image-gallery">
+                    <img src="images/Cheeseburger.png" alt="Delicious Cheeseburger">
+                    <img src="images/Sushi Platter.png" alt="Fresh Sushi Platter">
+                    <img src="images/Chocolate Cake.png" alt="Decadent Chocolate Cake">
+                </div>
+            </section>
+            <section id="reservation">
+                <h2>RESERVATION</h2>
+                <h3>Are you ready for a culinary adventure?</h3>
+                <form id="reservation-form">
+                    <div>
+                        <label for="res-name">Name</label>
+                        <input type="text" id="res-name" name="res-name" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label for="res-email">Email</label>
+                        <input type="email" id="res-email" name="res-email" placeholder="Your Email" required>
+                    </div>
+                    <div>
+                        <label for="res-mobile">Mobile Number</label>
+                        <input type="tel" id="res-mobile" name="res-mobile" placeholder="Mobile Number" required>
+                    </div>
+                    <div>
+                        <label for="res-branch">Branch</label>
+                        <select id="res-branch" name="res-branch" required>
+                            <option value="koromangala">Koromangala</option>
+                            <option value="cunningham">Cunningham Road</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="res-date">Date</label>
+                        <input type="date" id="res-date" name="res-date" required>
+                    </div>
+                    <div>
+                        <label for="res-time">Time</label>
+                        <input type="time" id="res-time" name="res-time" required>
+                    </div>
+                    <div>
+                        <label for="res-guests">Number of Guests</label>
+                        <select id="res-guests" name="res-guests" required>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                            <option value="7">7 Guests</option>
+                            <option value="8">8 Guests</option>
+                            <option value="9">9 Guests</option>
+                            <option value="10">10 Guests</option>
+                            <option value="11">11 Guests</option>
+                            <option value="12">12 Guests</option>
+                            <option value="13">13 Guests</option>
+                            <option value="14">14 Guests</option>
+                            <option value="15">15 Guests</option>
+                        </select>
+                        <small>LIMITED SEATS !!</small>
+                    </div>
+                    <button type="submit" class="submit-reservation-btn">Book Reservation</button>
+                </form>
+                <p class="reservation-phone">For Reservation Call: +91 0123456789</p>
+            </section>
+        </main>
         <footer>
-            <p>&copy; 2025 Food Delivery</p>
+            <div class="footer-content">
+                <div class="footer-column connect">
+                    <h4>Stay connected</h4>
+                    <div class="social-media-icons">
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 1 Placeholder"></a>
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 2 Placeholder"></a>
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 3 Placeholder"></a>
+                    </div>
+                </div>
+                <div class="footer-column address">
+                    <h4>Our Address</h4>
+                    <p>Koramangala, Peace Vill, Municipal No. 23, 5th Cross, 5th Block, Koramangala, Bengaluru, Bengaluru Urban, Karnataka, 560095</p>
+                </div>
+                <div class="footer-column contact">
+                    <h4>Reservations</h4>
+                    <p>For Reservation Call: <a href="tel:+910123456789">+91 0123456789</a></p>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Louiss. All Rights Reserved.</p>
+            </div>
         </footer>
-    </div> <!-- .app-wrapper ends -->
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

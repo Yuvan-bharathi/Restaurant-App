@@ -1,7 +1,3 @@
-/* =====================================================================================
-   GENERAL STYLES, VARIABLES & RESETS
-   ===================================================================================== */
-
 /* Basic Reset */
 * {
     margin: 0;
@@ -12,8 +8,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f4f4f4; /* Default light background */
+    color: #333; /* Default text color */
 }
 
 a {
@@ -27,9 +23,10 @@ ul {
 
 img {
     max-width: 100%;
+    display: block; /* Basic default for images */
 }
 
-/* Variables */
+/* Variables from original project (assuming these are desired) */
 :root {
     --primary-color: #ff6f61;
     --secondary-color: #333;
@@ -42,8 +39,8 @@ img {
     --footer-text-color: #fff;
     --button-hover-color: #ff4b3a;
 
-    --font-family-primary: 'Arial', sans-serif;
-    --font-family-secondary: 'Helvetica', sans-serif; /* Example for headings */
+    --font-family-primary: 'Arial', sans-serif; /* Fallback */
+    /* --font-family-secondary: 'Helvetica', sans-serif; /* Example for headings - can be added later */
 
     --font-size-base: 16px;
     --font-size-h1: 2.5rem;
@@ -51,329 +48,570 @@ img {
     --font-size-h3: 1.5rem;
 }
 
-/* Dark Mode Variable Overrides */
+/* Dark Mode Variable Overrides (can be populated later if dark mode is re-implemented) */
 body.dark-mode {
-    --primary-color: #ff8a80; /* Lighter shade for dark mode */
-    --secondary-color: #bbb;
-    --light-color: #222; /* Background becomes dark */
-    --dark-color: #fff;  /* Text becomes light */
-    --text-color: #f0f0f0;
-    --background-color: #121212;
-    --card-background: #1e1e1e;
-    --footer-background: #1e1e1e;
-    --footer-text-color: #f0f0f0;
-    --button-hover-color: #ff6f61;
+    /* --primary-color: #ff8a80; */
+    /* --secondary-color: #bbb; */
+    /* --light-color: #222; */
+    /* --dark-color: #fff; */
+    /* --text-color: #f0f0f0; */
+    /* --background-color: #121212; */
+    /* --card-background: #1e1e1e; */
+    /* --footer-background: #1e1e1e; */
+    /* --footer-text-color: #f0f0f0; */
+    /* --button-hover-color: #ff6f61; */
 }
 
-/* General Page Structure & Utilities */
-.container {
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
-}
-
-.app-wrapper {
-    max-width: 1600px;
+/* Basic app wrapper for consistent width and centering */
+#app-wrapper {
+    max-width: 1600px; /* Or a preferred max-width */
     margin: 0 auto;
-    /* Padding is intentionally omitted here. Sections within the wrapper
-       can use .container for padding and narrower content width, or
-       span the full width of .app-wrapper if desired (e.g., for backgrounds). */
+    /* background-color: var(--light-color); /* Optional: if wrapper has a distinct background */
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Optional: subtle shadow for the wrapper */
 }
 
-/* =====================================================================================
-   RESTAURANT DETAILS SECTION (index.html)
-   ===================================================================================== */
+header, main, footer {
+    padding: 1rem 20px; /* Basic padding, can be overridden by specific section styles */
+}
 
-#restaurant-details {
+/* Hero Section Styles */
+#hero {
     display: flex;
+    flex-direction: column; /* Default for mobile: image stacks above text */
     align-items: center;
-    justify-content: space-between; /* Distributes space between paragraph and logo */
     padding: 20px;
+    background-color: var(--card-background); /* Or another suitable background */
+    margin-bottom: 30px; /* Space before next section */
+    border-radius: 8px; /* Optional: if sections have card-like appearance */
+}
+
+.hero-image-container {
+    width: 100%;
     margin-bottom: 20px;
-    background-color: var(--card-background);
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Control image height */
+    object-fit: cover; /* Cover the area, might crop */
+    border-radius: 8px; /* Optional: if image has rounded corners */
+}
+
+.hero-text-container {
+    text-align: center;
+}
+
+.hero-text-container h1 {
+    font-size: var(--font-size-h1, 2.5rem); /* Use variable or fallback */
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+}
+
+.hero-text-container h2 {
+    font-size: var(--font-size-h3, 1.5rem); /* Use variable or fallback */
+    color: var(--secondary-color);
+    margin-bottom: 1em;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.hero-text-container p {
+    font-size: var(--font-size-base, 1rem);
+    line-height: 1.6;
+    color: var(--text-color);
+    text-align: justify; /* Justify for block paragraph */
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+    #hero {
+        flex-direction: row; /* Image beside text */
+        text-align: left; /* Align text to left in text container */
+    }
+
+    .hero-image-container {
+        width: 40%; /* Image takes 40% width */
+        margin-right: 30px; /* Space between image and text */
+        margin-bottom: 0; /* Reset mobile margin */
+    }
+
+    .hero-text-container {
+        width: 55%; /* Text takes ~55% width */
+        text-align: left; /* Align text to left */
+    }
+
+    .hero-text-container h1,
+    .hero-text-container h2 {
+        text-align: left; /* Ensure headings are also left-aligned */
+    }
+
+    .hero-text-container p {
+        text-align: left; /* Justify might be too much, left align for cleaner look */
+    }
+}
+
+/* Cuisine Intro Section Styles */
+#cuisine-intro {
+    padding: 20px;
+    text-align: center; /* Center align headings and paragraph by default */
+    background-color: var(--background-color); /* Different from hero, or remove for seamless flow */
+    margin-bottom: 30px;
+    border-radius: 8px; /* Optional */
+}
+
+#cuisine-intro h2 {
+    font-size: var(--font-size-h2, 2rem);
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+#cuisine-intro p {
+    font-size: var(--font-size-base, 1rem);
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 800px; /* Constrain paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+    text-align: justify; /* Or center if preferred */
+}
+
+#cuisine-intro .button-container {
+    margin-bottom: 25px;
+    text-align: right; /* Align button to the right */
+}
+
+.go-to-menu-btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.go-to-menu-btn:hover {
+    background-color: var(--button-hover-color);
+}
+
+.food-image-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-around; /* Distribute images nicely */
+    gap: 15px; /* Space between images */
+    margin-top: 20px;
+}
+
+.food-image-gallery img {
+    width: 100%; /* Default for mobile, one image per row */
+    max-width: 300px; /* Max width for each image in the gallery */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: var(--text-color); /* Ensure text color is appropriate for card background */
 }
 
-#restaurant-details p {
-    flex-grow: 1; /* Allows paragraph to take available space */
-    max-width: 70%; /* Limits paragraph width */
-    margin-right: 20px; /* Space between paragraph and logo */
-    line-height: 1.6; /* Improve readability */
+/* Responsive adjustments for image gallery */
+@media (min-width: 480px) { /* For slightly larger screens, allow more images per row if space */
+  .food-image-gallery img {
+      width: calc(50% - 10px); /* Example: 2 images per row with gap */
+  }
 }
 
-#restaurant-logo {
-    max-height: 50px; /* Max height for the logo */
-    width: auto; /* Maintain aspect ratio */
-    flex-shrink: 0; /* Prevent logo from shrinking if space is tight */
+@media (min-width: 768px) {
+    .food-image-gallery img {
+        width: calc(33.333% - 10px); /* Example: 3 images per row with gap */
+    }
+     #cuisine-intro p {
+          text-align: center; /* Center for larger screens if preferred over justify */
+     }
 }
 
+/* Reservation Section Styles */
+#reservation {
+    padding: 40px 20px; /* More padding for a major section */
+    background-color: var(--card-background); /* Or a distinct color */
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px; /* Optional */
+}
 
-/* =====================================================================================
-   HEADER & NAVIGATION
-   ===================================================================================== */
+#reservation h2 {
+    font-size: var(--font-size-h2, 2rem);
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+}
 
-/* Header */
-header {
-    /* background: var(--primary-color); Changed to card background */
-    background-color: var(--card-background); /* Card-like background */
-    /* color: var(--light-color); Changed to text color for card background */
-    color: var(--text-color); /* Text color for card background */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Card-like shadow */
-    border-radius: 8px; /* Rounded corners for card */
-    /* padding: 1rem 0; Combined below */
-    text-align: center; /* Flex properties will override most of this for direct children */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+#reservation h3 {
+    font-size: var(--font-size-h3, 1.5rem);
+    color: var(--secondary-color);
+    margin-bottom: 1.5em;
+    font-weight: normal;
+}
+
+#reservation-form {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: 15px;
+    max-width: 600px; /* Max width for the form */
+    margin: 0 auto 20px auto; /* Center form and add bottom margin */
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+#reservation-form div {
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+}
+
+#reservation-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#reservation-form input[type="text"],
+#reservation-form input[type="email"],
+#reservation-form input[type="tel"],
+#reservation-form input[type="date"],
+#reservation-form input[type="time"],
+#reservation-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Use a variable later e.g. var(--border-color) */
+    border-radius: 4px;
+    font-size: var(--font-size-base, 1rem);
+}
+
+#reservation-form small {
+    display: block; /* Make it take its own line */
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--primary-color); /* Or a warning color */
+    font-weight: bold;
+}
+
+.submit-reservation-btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    grid-column: 1 / -1; /* Make button span full width if in grid */
+    margin-top: 10px;
+}
+
+.submit-reservation-btn:hover {
+    background-color: var(--button-hover-color);
+}
+
+.reservation-phone {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Responsive adjustments for form grid */
+@media (min-width: 768px) {
+    #reservation-form {
+        grid-template-columns: 1fr 1fr; /* Two columns for larger screens */
+        gap: 20px; /* Slightly larger gap */
+    }
+    /* Example: Make Name and Email span full width if desired, or specific items like date/time */
+    /* #reservation-form div:has(#res-name),
+       #reservation-form div:has(#res-email) { grid-column: 1 / -1; } */
+}
+
+/* Navbar Styles */
+/* The main <header> tag will act as the full-width background container for .navbar-main */
+/* Basic header styles from reset:
+   header { padding: 1rem 20px; background-color: var(--card-background); etc. }
+   Ensure these provide a suitable backdrop for .navbar-main if .navbar-main itself isn't card-styled.
+   Or, apply card styling to .navbar-main if the <header> is just a wrapper.
+   For now, assume <header> has some padding and background.
+*/
+
+.navbar-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding-left: 20px; Combined below */
-    /* padding-right: 20px; Combined below */
-    padding: 1rem 20px; /* Vertical and horizontal padding */
-
-    /* Added for width constraint and centering */
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-
-    /* Ensure the header takes up the available width of its containing block if it's less than max-width,
-       and then centers itself if the viewport is wider than 1600px.
-       For sticky positioning to work correctly across the viewport width before centering,
-       the actual element itself needs to be able to be full width, then its *content* centered.
-       However, the request is to make the *header itself* 1600px and centered.
-       This means the background of the header will be 1600px, not full-bleed.
-       If a full-bleed background was desired with centered content, an inner div would be needed.
-       Given the request, max-width on header is the direct approach.
-       It means if the screen is > 1600px, the header's background won't touch the screen edges.
-    */
+    width: 100%; /* Take full width of parent <header>'s padding box */
+    /* If header has padding: 1rem 20px, navbar-main will be inside that. */
 }
 
-header h1 {
-    font-size: var(--font-size-h1);
-    font-family: var(--font-family-secondary);
-    /* color: var(--primary-color); /* Example: if H1 needs specific color due to header text color change */
-                                   /* Let's see how it inherits first. var(--text-color) should be fine. */
+/* Navbar Left (Logo) */
+.navbar-left #navbar-logo {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+    display: block; /* Remove extra space below img */
 }
 
+/* Navbar Middle (Nav Links) */
+.navbar-middle {
+    flex-grow: 1; /* Allow middle to take available space */
+    text-align: center; /* Center the nav links */
+}
+
+.navbar-middle .nav-link {
+    margin: 0 15px; /* Spacing between links */
+    font-size: 1rem; /* Example size */
+    color: var(--text-color); /* Ensure good contrast on header background */
+    font-weight: bold;
+    text-transform: uppercase; /* Optional styling */
+    letter-spacing: 1px; /* Optional styling */
+    transition: color 0.3s ease;
+}
+
+.navbar-middle .nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Navbar Right (Reservation, Cart, Dark Mode) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spacing between items in the right section */
+}
+
+.reservation-button {
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase; /* Optional */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.reservation-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Styling for .header-controls, .cart-icon, #cart-count, #dark-mode-toggle */
+/* Assume these are already styled from previous steps and will integrate. */
+/* If not, add basic styling here. For example: */
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 15px; /* Adds space between cart icon and dark mode toggle */
+    gap: 15px; /* Consistent gap */
 }
 
-/* Cart Icon specific styling for badge */
 .cart-icon {
-    position: relative;
-    /* display: inline-block; /* Replaced by flex for centering content */
-    display: flex; /* For centering the image if padding is added */
-    align-items: center;
-    justify-content: center;
-    background-color: var(--background-color); /* Subtle background */
-    padding: 8px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease; /* Smooth transition for hover */
+    position: relative; /* For cart count badge */
+    /* Add other styles if needed from previous cart icon card styling,
+       or simplify if it's not a card anymore */
+    /* Resetting some previous card styles for .cart-icon if it's now simpler */
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
 }
 
-/* Add a hover effect for .cart-icon */
-.cart-icon:hover {
-    background-color: var(--primary-color); /* Example: use primary color on hover */
-    /* Or a slightly lighter/darker version of its normal background */
-    /* background-color: #e0e0e0; /* Example for light mode */
-}
-/* body.dark-mode .cart-icon:hover {
-    background-color: #333; /* Example for dark mode */
-/* } */
-
-
-header .cart-icon img {
-    width: 30px;
-    height: 30px;
-    display: block; /* Prevents extra space below image */
+.cart-icon img {
+    height: 24px; /* Adjust size as needed */
+    width: 24px;
+    display: block;
 }
 
 #cart-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -5px;
+    right: -5px;
     background-color: var(--primary-color);
     color: var(--light-color);
     border-radius: 50%;
-    padding: 3px 6px; /* Adjusted padding slightly for better circular appearance with text */
-    font-size: 0.75rem;
+    padding: 2px 5px;
+    font-size: 0.7rem;
     font-weight: bold;
-    min-width: 20px; /* Adjusted for slightly larger padding/text */
-    height: 20px; /* Ensure height matches min-width for circle */
-    line-height: 14px; /* Adjust for vertical centering of text in the circle */
-    text-align: center;
-    border: 1px solid var(--light-color); /* Pop against icon */
-    box-sizing: border-box; /* Ensure padding and border are included in width/height */
 }
-
 
 #dark-mode-toggle {
-    background: var(--primary-color); /* Match header background */
-    border: 1px solid var(--light-color); /* Light border for light mode */
-    color: var(--light-color); /* Light text for light mode */
-    padding: 5px 10px; /* Smaller padding */
+    background: none;
+    border: 1px solid var(--secondary-color); /* Example border */
+    color: var(--text-color); /* Example color */
+    padding: 5px 8px;
+    border-radius: 50%; /* Make it round */
     cursor: pointer;
-    border-radius: 20px; /* Rounded button */
     font-size: 1.2rem; /* Emoji size */
     line-height: 1;
-    /* margin-left: 15px; /* Space from cart icon - now handled by gap in .header-controls */
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-body.dark-mode #dark-mode-toggle {
-    background: var(--primary-color); /* Match header background in dark mode (could be same or different) */
-    border-color: var(--dark-color); /* Text color in dark mode becomes border */
-    color: var(--dark-color); /* Text color in dark mode */
+/* Responsive Navbar (Basic Example: Stack items for small screens) */
+@media (max-width: 768px) {
+    .navbar-main {
+        flex-direction: column;
+        gap: 15px; /* Space when stacked */
+    }
+
+    .navbar-middle {
+        order: 3; /* Example: move nav links to bottom when stacked */
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column; /* Stack nav links */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navbar-left, .navbar-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Example: logo left, controls right on their "row" */
+        align-items: center;
+    }
+
+    .navbar-right {
+        justify-content: flex-end; /* Push all items in navbar-right to the end */
+    }
+
+    /* If search controls are also in header, they need responsive handling too */
+    /* header .controls { flex-direction: column; width: 100%; margin-top: 10px; } */
 }
 
-#dark-mode-toggle:hover {
-    opacity: 0.8;
+/* Footer Styles */
+/* The main <footer> tag itself */
+footer {
+    background-color: var(--footer-background, #333); /* Use variable or fallback */
+    color: var(--footer-text-color, #fff);
+    padding: 30px 20px; /* Decent padding for footer */
+    margin-top: 40px; /* Space above the footer */
 }
 
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    justify-content: space-between; /* Distribute columns */
+    gap: 20px; /* Space between columns when they wrap or are side-by-side */
+    margin-bottom: 20px;
+}
 
-/* Navigation (Placeholder - currently no explicit nav links beyond cart) */
-nav ul {
+.footer-column {
+    flex: 1; /* Allow columns to grow and shrink */
+    min-width: 250px; /* Minimum width before wrapping, adjust as needed */
+    padding: 10px; /* Padding within each column */
+}
+
+.footer-column h4 {
+    font-size: 1.2rem; /* Slightly larger than base for headings */
+    color: var(--primary-color); /* Use primary color for footer headings or keep it light */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: var(--footer-text-color, #fff); /* Ensure links are visible */
+    text-decoration: underline; /* Optional: underline links in footer */
+}
+
+.footer-column a:hover {
+    color: var(--primary-color); /* Hover color for links */
+}
+
+.social-media-icons {
+    display: flex;
+    gap: 10px; /* Space between icons */
+}
+
+.social-media-icons .social-icon img {
+    width: 24px; /* Size for placeholder icons */
+    height: 24px;
+    /* Add filter: invert(1) if using dark icons on dark background, or if cart.png is dark */
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--secondary-color, #555); /* Separator line */
+    font-size: 0.85rem;
+}
+
+/* Responsive adjustments for footer columns if needed,
+   though flex-wrap and min-width should handle most cases. */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack columns on smaller screens */
+        align-items: center; /* Center columns when stacked */
+        text-align: center; /* Center text within columns */
+    }
+
+    .footer-column {
+        min-width: 100%; /* Each column takes full width */
+        margin-bottom: 20px; /* Space between stacked columns */
+    }
+
+    .social-media-icons {
+        justify-content: center; /* Center icons when columns are stacked */
+    }
+}
+
+/* Menu Page - Controls Section */
+#menu-page-content .controls { /* Target controls specifically on menu page if needed */
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 20px; /* Already has inline, can refine here */
+    margin-bottom: 20px;
+    background-color: var(--card-background); /* Optional: card look for controls */
+    border-radius: 8px; /* Optional */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Optional */
+    gap: 15px;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: var(--light-color);
-    font-weight: bold;
-}
-
-/* =====================================================================================
-   MAIN CONTENT AREA
-   ===================================================================================== */
-
-/* Main Content Area */
-main {
-    padding: 20px 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-/* =====================================================================================
-   FOOTER
-   ===================================================================================== */
-
-/* Footer */
-footer {
-    background: var(--footer-background);
-    color: var(--footer-text-color);
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 20px;
-}
-
-/* =====================================================================================
-   MENU PAGE (index.html) - CONTROLS, FOOD ITEMS
-   ===================================================================================== */
-
-/* Controls section (can be in header or elsewhere) */
-.controls {
-    display: flex; /* Base display property */
-    align-items: center; /* Base alignment */
-    gap: 10px; /* Base gap */
-    /* Properties like padding, background, margin-bottom, border-radius, box-shadow
-       are removed as they were specific to its previous standalone location. */
-}
-
-/* Specific styles for .controls when it's inside the header */
-header .controls {
-    flex-grow: 1; /* Takes available space in the header */
-    justify-content: center; /* Centers its children (input and select) */
-    padding: 0 15px; /* Adds some horizontal padding within the header */
-}
-
-/* Input and select within .controls (general, can be overridden) */
-.controls input[type="text"] {
-    padding: 8px; /* Slightly reduced padding for header */
-    border: 1px solid #ddd; /* Consider var(--light-color) or var(--secondary-color) if theme needed */
+#menu-page-content .controls input[type="text"],
+#menu-page-content .controls select {
+    padding: 10px; /* Already has inline, can refine here */
+    border: 1px solid #ccc; /* Use var(--border-color) */
     border-radius: 4px;
-    font-size: 0.9rem; /* Slightly reduced font size for header */
-    width: 300px; /* Default width */
+    font-size: var(--font-size-base, 1rem);
 }
 
-header .controls input[type="text"] {
-    width: auto; /* Allow shrinking */
-    max-width: 250px; /* Max width in header */
-    flex-shrink: 1; /* Allow shrinking if space is tight */
-    /* Consider different border/background for header theme if needed */
-    border-color: var(--light-color); /* Example: lighter border for header */
-    color: var(--secondary-color); /* Example: ensure text is visible on primary header bg */
-    background-color: var(--light-color); /* Example: light background for input */
+#menu-page-content .controls input[type="text"] {
+    min-width: 250px; /* Or some other suitable width */
 }
 
 
-.controls select {
-    padding: 8px; /* Slightly reduced padding for header */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem; /* Slightly reduced font size for header */
-}
-
-header .controls select {
-    /* Consider different border/background for header theme if needed */
-    border-color: var(--light-color); /* Example: lighter border for header */
-    color: var(--secondary-color); /* Example: ensure text is visible on primary header bg */
-    background-color: var(--light-color); /* Example: light background for select */
-}
-
-
-/* General Button Styles */
-button, .button {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: var(--font-size-base);
-    transition: background-color 0.3s ease;
-}
-
-button:hover, .button:hover {
-    background-color: var(--button-hover-color);
-}
-
-/* Utility Classes */
-.text-center {
-    text-align: center;
-}
-
-.mt-1 { margin-top: 1rem; }
-.mt-2 { margin-top: 2rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
-
-/* Menu Page (index.html) Specific Styles */
-
-/* Food Items Grid / List */
+/* Food Items Grid */
 #food-items {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4x4 grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
     gap: 20px;
-    padding: 20px; /* Padding around the grid */
-    max-width: 1200px; /* Max width for the grid */
-    margin: auto; /* Center the grid */
+    padding: 20px; /* Already has inline, can refine here */
+    /* max-width: 1200px; /* Optional: if grid itself needs a max width */
+    /* margin: 0 auto; /* Optional: to center the grid if max-width is set */
 }
 
+/* As per original request: arrange the food-items card by 4x4 */
+/* This overrides repeat(auto-fit) for larger screens if a fixed 4-column is desired */
+@media (min-width: 1200px) { /* Adjust breakpoint as needed for 4 columns */
+    #food-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 599px) { /* Single column on very small screens */
+    #food-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Food Item Card Styling (largely from original project style.css) */
 .food-item-card {
     background-color: var(--card-background);
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Use var(--border-color) */
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -381,6 +619,7 @@ button:hover, .button:hover {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* Added for badge positioning */
 }
 
 .food-item-card:hover {
@@ -391,22 +630,22 @@ button:hover, .button:hover {
 .food-item-card img {
     width: 100%;
     height: 200px; /* Fixed height for images */
-    object-fit: cover; /* Ensures image covers the area without distortion */
+    object-fit: cover;
     border-radius: 6px;
     margin-bottom: 10px;
 }
 
 .food-item-card h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h3, 1.5rem);
     color: var(--primary-color);
     margin-bottom: 8px;
-    font-family: var(--font-family-secondary);
+    /* font-family: var(--font-family-secondary); /* Uncomment if secondary font is defined */
 }
 
 .food-item-card .description {
     font-size: 0.9rem;
     margin-bottom: 10px;
-    flex-grow: 1; /* Allows description to take available space */
+    flex-grow: 1;
     color: var(--text-color);
 }
 
@@ -433,11 +672,12 @@ button:hover, .button:hover {
     background-color: var(--button-hover-color);
 }
 
-/* Badges on food cards (e.g., "New", "Bestseller") */
+/* Badge styling (if any items have badges in script.js) */
 .food-item-card .badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: absolute; /* Needs .food-item-card to be position: relative if badge is a child */
+    /* Or, if badge is part of card.innerHTML, ensure its container allows this */
+    top: 10px; /* Example position */
+    left: 10px; /* Example position */
     background-color: var(--primary-color);
     color: var(--light-color);
     padding: 5px 8px;
@@ -446,426 +686,11 @@ button:hover, .button:hover {
     font-weight: bold;
 }
 
-.empty-menu-message {
+/* Message for empty menu/no results */
+.empty-menu-message { /* From original script.js */
     text-align: center;
     font-size: 1.2rem;
     color: var(--secondary-color);
     padding: 30px;
-    grid-column: 1 / -1; /* Make it span all columns if in a grid */
-}
-
-/* =====================================================================================
-   CART PAGE (cart.html) - ITEMS, SUMMARY
-   ===================================================================================== */
-
-/* Container for cart items list */
-#cart-items {
-    padding: 20px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    background-color: var(--card-background);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.cart-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-right: 15px;
-}
-
-.cart-item-info {
-    flex-grow: 1;
-}
-
-.cart-item-info h3 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-.cart-item-info .price {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    margin-bottom: 5px;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-}
-
-.cart-item-controls .quantity-btn { /* Style for + and - buttons */
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.cart-item-controls .quantity-btn:hover {
-    background-color: var(--primary-color); /* Use primary color on hover for consistency */
-}
-
-.cart-item-controls input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    text-align: center;
-    border: 1px solid #ddd; /* Use a variable or standard color */
-    border-radius: 4px;
-    margin: 0 10px;
-    font-size: 1rem; /* Ensure consistent font size */
-}
-
-body.dark-mode .cart-item-controls input[type="number"] {
-    background-color: var(--dark-color); /* Dark input background */
-    color: var(--light-color); /* Light text on dark input */
-    border-color: var(--secondary-color); /* Darker border */
-}
-
-
-.cart-item-controls .remove-btn {
-    background-color: #e74c3c; /* Specific color for remove button - consider making a variable if used elsewhere */
-    color: var(--light-color);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cart-item-controls .remove-btn:hover {
-    background-color: #c0392b;
-}
-
-#cart-summary {
-    background-color: var(--card-background);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin: 20px; /* Margin for overall section */
-}
-
-#cart-summary h2 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-}
-
-#cart-summary p {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: var(--text-color);
-}
-
-#cart-summary #checkout {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1rem;
-    margin-top: 10px;
-}
-
-.empty-cart-message {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-    padding: 30px;
-}
-
-/* =====================================================================================
-   RESPONSIVE DESIGN - MEDIA QUERIES
-   ===================================================================================== */
-
-/* Tablets and smaller desktops */
-@media (max-width: 992px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    header h1 {
-        font-size: 2rem;
-    }
-
-    /* The general .controls input[type="text"] width: 300px is already wider than 250px.
-       The header .controls input[type="text"] is max-width: 250px.
-       So this rule might not be strictly needed anymore or could be adapted.
-       Let's remove it for now to avoid conflicting width settings.
-    */
-    /* .controls input[type="text"] {
-        width: 250px;
-    } */
-
-    #food-items {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .food-item-card h3 {
-        font-size: 1.3rem;
-    }
-}
-
-/* =====================================================================================
-   TESTIMONIALS SECTION (index.html)
-   ===================================================================================== */
-
-/* Testimonials Section */
-#testimonials {
-    background-color: var(--card-background); /* Or a slightly different shade from main background */
-    padding: 40px 0;
-    color: var(--text-color);
-}
-
-#testimonials h2 {
-    text-align: center;
-    font-size: var(--font-size-h2);
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    font-family: var(--font-family-secondary);
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1200px; /* Consistent with .container but applied directly if needed */
-    margin: 0 auto; /* Center the grid if it's narrower than section */
-    padding: 0 20px; /* Padding if grid is edge-to-edge of section */
-}
-
-.testimonial-card {
-    background-color: var(--background-color); /* Slightly different from section background */
-    border: 1px solid #ddd; /* Use variable or specific color */
-    border-left: 5px solid var(--primary-color);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
-
-.testimonial-card .quote {
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    color: var(--text-color); /* Ensure quote text color contrasts */
-}
-
-.testimonial-card .author {
-    font-weight: bold;
-    text-align: right;
-    font-size: 1rem;
-    color: var(--primary-color);
-}
-
-/* Responsive adjustments for testimonials if needed */
-@media (max-width: 768px) {
-    /* Responsive styles for Restaurant Details section */
-    #restaurant-details {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    #restaurant-details p {
-        max-width: 100%; /* Full width on smaller screens */
-        margin-right: 0; /* No right margin when stacked */
-        margin-bottom: 15px; /* Space below paragraph when stacked */
-    }
-
-    #restaurant-logo {
-        margin-bottom: 10px; /* Optional: space below logo if needed */
-    }
-
-    /* Testimonials adjustments from before */
-    #testimonials h2 {
-        font-size: 1.75rem; /* Adjust h2 size from general responsive rule if needed */
-    }
-    .testimonial-grid {
-        padding: 0 10px; /* Adjust padding for smaller screens */
-    }
-    .testimonial-card .quote {
-        font-size: 1rem;
-    }
-    .testimonial-card .author {
-        font-size: 0.9rem;
-    }
-}
-/* Mobile devices */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-    header h1 {
-        font-size: 1.8rem;
-        margin-bottom: 5px; /* Reduced margin for smaller screens */
-    }
-    header .cart-icon {
-        /* position: absolute; Example: move cart icon for small screens */
-        /* top: 15px; */
-        /* right: 15px; */
-        /* The above styles are problematic with the new flex layout for header-controls.
-           The header itself becomes flex-direction: column, so absolute positioning here
-           might be relative to the h1 if not careful.
-           Let's rely on the natural flow within .header-controls or adjust .header-controls itself.
-        */
-    }
-    /* Adjust header for small screens to ensure .header-controls also behaves well */
-    header {
-        flex-direction: column;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-    header h1 {
-        margin-bottom: 10px; /* Add some space between title and controls div */
-    }
-    .header-controls {
-        /* Ensure it doesn't shrink and items stay aligned */
-        width: 100%;
-        justify-content: flex-end; /* Pushes items to the right if header is full width */
-        margin-top: 10px; /* Add space when header items stack */
-    }
-
-    /* Styles for .controls when header is stacked */
-    header .controls {
-        width: 100%; /* Take full width */
-        margin: 10px 0; /* Add vertical spacing */
-        padding: 0; /* Remove horizontal padding if taking full width */
-        /* flex-direction and align-items are already handled by the general .controls responsive rule below */
-    }
-
-    /* General .controls responsive rules remain */
-    .controls {
-        flex-direction: column;
-        align-items: stretch; /* Make input and select full width */
-    }
-
-    .controls input[type="text"],
-    .controls select {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px; /* Add space between stacked controls */
-    }
-    .controls select {
-        margin-bottom: 0; /* No margin for the last element */
-    }
-
-
-    #food-items {
-        grid-template-columns: 1fr; /* Single column for very small screens */
-        padding: 10px;
-    }
-
-    .food-item-card {
-        padding: 10px;
-    }
-
-    .food-item-card img {
-        height: 180px;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-item img {
-        width: 100%;
-        height: 150px; /* Adjust image height for stacked layout */
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .cart-item-info {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .cart-item-controls {
-        width: 100%;
-        justify-content: space-between; /* Space out controls */
-    }
-
-    .cart-item-controls input[type="number"] {
-        margin: 0 5px; /* Adjust margins */
-    }
-
-    #cart-summary {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    #cart-summary h2 {
-        font-size: 1.5rem;
-    }
-
-    #cart-summary p {
-        font-size: 1rem;
-    }
-
-    /* Adjust general font sizes for smaller screens */
-    :root {
-        --font-size-base: 14px;
-        --font-size-h1: 2rem; /* Adjusted from 2.5rem */
-        --font-size-h2: 1.75rem; /* Adjusted from 2rem */
-        --font-size-h3: 1.25rem; /* Adjusted from 1.5rem */
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
-    header .cart-icon img {
-        width: 25px;
-        height: 25px;
-    }
-
-    .food-item-card .description {
-        font-size: 0.85rem;
-    }
-
-    .food-item-card .price {
-        font-size: 1rem;
-    }
-
-    .food-item-card .add-to-cart-btn {
-        padding: 8px;
-        font-size: 0.9rem;
-    }
-
-    .cart-item-info h3 {
-        font-size: 1.1rem;
-    }
-    .cart-item-info .price {
-        font-size: 0.9rem;
-    }
-    .cart-item-controls .remove-btn {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-    }
-    #cart-summary #checkout {
-        padding: 10px;
-        font-size: 1rem;
-    }
+    grid-column: 1 / -1; /* Make it span all columns in a grid */
 }

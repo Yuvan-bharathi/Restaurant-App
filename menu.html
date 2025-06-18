@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Louiss</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-wrapper">
+        <header>
+            <div class="navbar-main">
+                <div class="navbar-left">
+                    <a href="index.html" id="logo-link">
+                        <img src="images/cart.png" alt="Louiss Logo" id="navbar-logo">
+                    </a>
+                </div>
+                <nav class="navbar-middle">
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="#" class="nav-link">Contact Us</a>
+                </nav>
+                <div class="navbar-right">
+                    <a href="index.html#reservation" class="nav-button reservation-button">Reservation</a>
+                    <div class="header-controls">
+                        <div class="cart-icon">
+                            <a href="cart.html">
+                                <img src="images/cart.png" alt="Cart">
+                                <span id="cart-count">0</span>
+                            </a>
+                        </div>
+                        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="menu-page-content">
+            <section class="controls" style="padding: 20px; text-align: center;"> <!-- Basic styling for now -->
+                <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items" style="padding: 10px; margin-right: 10px;">
+                <select id="filter" aria-label="Filter food items by category" style="padding: 10px;">
+                    <!-- Options will be populated by script.js -->
+                </select>
+            </section>
+            <div id="food-items" style="padding: 20px;">
+                <!-- Food items will be displayed here by script.js -->
+                <!-- The script.js renderMenuItems function targets an element with id "food-items" -->
+            </div>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column connect">
+                    <h4>Stay connected</h4>
+                    <div class="social-media-icons">
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 1 Placeholder"></a>
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 2 Placeholder"></a>
+                        <a href="#" class="social-icon"><img src="images/cart.png" alt="Social Media 3 Placeholder"></a>
+                    </div>
+                </div>
+                <div class="footer-column address">
+                    <h4>Our Address</h4>
+                    <p>Koramangala, Peace Vill, Municipal No. 23, 5th Cross, 5th Block, Koramangala, Bengaluru, Bengaluru Urban, Karnataka, 560095</p>
+                </div>
+                <div class="footer-column contact">
+                    <h4>Reservations</h4>
+                    <p>For Reservation Call: <a href="tel:+910123456789">+91 0123456789</a></p>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Louiss. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

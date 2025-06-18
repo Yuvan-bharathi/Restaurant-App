@@ -9,48 +9,55 @@
 <body>
     <header>
         <h1>Louiss</h1>
-        <div class="cart-icon">
-            <a href="cart.html">
-                <img src="images/cart.png" alt="Cart">
-                <span id="cart-count">0</span>
-            </a>
+        <div class="header-controls">
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <img src="images/cart.png" alt="Cart">
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
         </div>
-        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
     </header>
-    <section class="controls">
-        <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
-        <select id="filter" aria-label="Filter food items by category">
-            <option value="all">All</option>
-            <option value="pizza">Pizza</option>
-            <option value="burger">Burger</option>
-            <option value="sushi">Sushi</option>
-        </select>
-    </section>
-    <main id="food-items">
-        <!-- Food items will be displayed here -->
-    </main>
-    <section id="testimonials">
-        <div class="container">
-            <h2>What Our Customers Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="quote">"This is the best food delivery service I've ever used! The Margherita Pizza was fantastic."</p>
-                    <p class="author">- Alex P.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="quote">"Quick delivery and the food (Cheeseburger) was still hot and delicious. Highly recommend!"</p>
-                    <p class="author">- Maria S.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="quote">"Amazing sushi platter! Fresh and beautifully presented. Will order again soon."</p>
-                    <p class="author">- Kenji T.</p>
+    <div class="app-wrapper">
+        <section id="restaurant-details">
+            <p>Louiss is a family-owned restaurant that has been serving delicious food for over 20 years. We are passionate about using fresh, locally-sourced ingredients to create memorable dining experiences.</p>
+        </section>
+        <section class="controls">
+            <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
+            <select id="filter" aria-label="Filter food items by category">
+                <option value="all">All</option>
+                <option value="pizza">Pizza</option>
+                <option value="burger">Burger</option>
+                <option value="sushi">Sushi</option>
+            </select>
+        </section>
+        <main id="food-items">
+            <!-- Food items will be displayed here -->
+        </main>
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="quote">"This is the best food delivery service I've ever used! The Margherita Pizza was fantastic."</p>
+                        <p class="author">- Alex P.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"Quick delivery and the food (Cheeseburger) was still hot and delicious. Highly recommend!"</p>
+                        <p class="author">- Maria S.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"Amazing sushi platter! Fresh and beautifully presented. Will order again soon."</p>
+                        <p class="author">- Kenji T.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <footer>
-        <p>&copy; 2025 Food Delivery</p>
-    </footer>
+        </section>
+        <footer>
+            <p>&copy; 2025 Food Delivery</p>
+        </footer>
+    </div> <!-- .app-wrapper ends -->
     <script src="script.js"></script>
 </body>
 </html>

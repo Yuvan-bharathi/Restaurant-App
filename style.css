@@ -1,0 +1,688 @@
+/* =====================================================================================
+   GENERAL STYLES, VARIABLES & RESETS
+   ===================================================================================== */
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Variables */
+:root {
+    --primary-color: #ff6f61;
+    --secondary-color: #333;
+    --light-color: #fff;
+    --dark-color: #222;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #fff;
+    --footer-background: #333;
+    --footer-text-color: #fff;
+    --button-hover-color: #ff4b3a;
+
+    --font-family-primary: 'Arial', sans-serif;
+    --font-family-secondary: 'Helvetica', sans-serif; /* Example for headings */
+
+    --font-size-base: 16px;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.5rem;
+}
+
+/* Dark Mode Variable Overrides */
+body.dark-mode {
+    --primary-color: #ff8a80; /* Lighter shade for dark mode */
+    --secondary-color: #bbb;
+    --light-color: #222; /* Background becomes dark */
+    --dark-color: #fff;  /* Text becomes light */
+    --text-color: #f0f0f0;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --footer-background: #1e1e1e;
+    --footer-text-color: #f0f0f0;
+    --button-hover-color: #ff6f61;
+}
+
+/* General Page Structure & Utilities */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* =====================================================================================
+   HEADER & NAVIGATION
+   ===================================================================================== */
+
+/* Header */
+header {
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 1rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+header h1 {
+    font-size: var(--font-size-h1);
+    font-family: var(--font-family-secondary);
+}
+
+header .cart-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+#dark-mode-toggle {
+    background: var(--primary-color); /* Match header background */
+    border: 1px solid var(--light-color); /* Light border for light mode */
+    color: var(--light-color); /* Light text for light mode */
+    padding: 5px 10px; /* Smaller padding */
+    cursor: pointer;
+    border-radius: 20px; /* Rounded button */
+    font-size: 1.2rem; /* Emoji size */
+    line-height: 1;
+    margin-left: 15px; /* Space from cart icon */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode #dark-mode-toggle {
+    background: var(--primary-color); /* Match header background in dark mode (could be same or different) */
+    border-color: var(--dark-color); /* Text color in dark mode becomes border */
+    color: var(--dark-color); /* Text color in dark mode */
+}
+
+#dark-mode-toggle:hover {
+    opacity: 0.8;
+}
+
+
+/* Navigation (Placeholder - currently no explicit nav links beyond cart) */
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--light-color);
+    font-weight: bold;
+}
+
+/* =====================================================================================
+   MAIN CONTENT AREA
+   ===================================================================================== */
+
+/* Main Content Area */
+main {
+    padding: 20px 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* =====================================================================================
+   FOOTER
+   ===================================================================================== */
+
+/* Footer */
+footer {
+    background: var(--footer-background);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+}
+
+/* =====================================================================================
+   MENU PAGE (index.html) - CONTROLS, FOOD ITEMS
+   ===================================================================================== */
+
+/* Controls section for search and filter */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--card-background);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: var(--font-size-base);
+    width: 300px; /* Adjust as needed */
+}
+
+.controls select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+}
+
+/* General Button Styles */
+button, .button {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* Menu Page (index.html) Specific Styles */
+
+/* Controls section already has some styling, let's refine */
+.controls {
+    gap: 10px; /* Adds space between items if they wrap or if more items are added */
+}
+
+/* Food Items Grid / List */
+#food-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px; /* Padding around the grid */
+}
+
+.food-item-card {
+    background-color: var(--card-background);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.food-item-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.food-item-card h3 {
+    font-size: var(--font-size-h3);
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-family: var(--font-family-secondary);
+}
+
+.food-item-card .description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Allows description to take available space */
+    color: var(--text-color);
+}
+
+.food-item-card .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.food-item-card .add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.food-item-card .add-to-cart-btn:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Badges on food cards (e.g., "New", "Bestseller") */
+.food-item-card .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.empty-menu-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding: 30px;
+    grid-column: 1 / -1; /* Make it span all columns if in a grid */
+}
+
+/* =====================================================================================
+   CART PAGE (cart.html) - ITEMS, SUMMARY
+   ===================================================================================== */
+
+/* Container for cart items list */
+#cart-items {
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-background);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.cart-item-info .price {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-controls .quantity-btn { /* Style for + and - buttons */
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item-controls .quantity-btn:hover {
+    background-color: var(--primary-color); /* Use primary color on hover for consistency */
+}
+
+.cart-item-controls input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd; /* Use a variable or standard color */
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 1rem; /* Ensure consistent font size */
+}
+
+body.dark-mode .cart-item-controls input[type="number"] {
+    background-color: var(--dark-color); /* Dark input background */
+    color: var(--light-color); /* Light text on dark input */
+    border-color: var(--secondary-color); /* Darker border */
+}
+
+
+.cart-item-controls .remove-btn {
+    background-color: #e74c3c; /* Specific color for remove button - consider making a variable if used elsewhere */
+    color: var(--light-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item-controls .remove-btn:hover {
+    background-color: #c0392b;
+}
+
+#cart-summary {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px; /* Margin for overall section */
+}
+
+#cart-summary h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+#cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+#cart-summary #checkout {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.empty-cart-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding: 30px;
+}
+
+/* =====================================================================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ===================================================================================== */
+
+/* Tablets and smaller desktops */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .controls input[type="text"] {
+        width: 250px;
+    }
+
+    #food-items {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .food-item-card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* =====================================================================================
+   TESTIMONIALS SECTION (index.html)
+   ===================================================================================== */
+
+/* Testimonials Section */
+#testimonials {
+    background-color: var(--card-background); /* Or a slightly different shade from main background */
+    padding: 40px 0;
+    color: var(--text-color);
+}
+
+#testimonials h2 {
+    text-align: center;
+    font-size: var(--font-size-h2);
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-family: var(--font-family-secondary);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px; /* Consistent with .container but applied directly if needed */
+    margin: 0 auto; /* Center the grid if it's narrower than section */
+    padding: 0 20px; /* Padding if grid is edge-to-edge of section */
+}
+
+.testimonial-card {
+    background-color: var(--background-color); /* Slightly different from section background */
+    border: 1px solid #ddd; /* Use variable or specific color */
+    border-left: 5px solid var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: var(--text-color); /* Ensure quote text color contrasts */
+}
+
+.testimonial-card .author {
+    font-weight: bold;
+    text-align: right;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for testimonials if needed */
+@media (max-width: 768px) {
+    #testimonials h2 {
+        font-size: 1.75rem; /* Adjust h2 size from general responsive rule if needed */
+    }
+    .testimonial-grid {
+        padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+    .testimonial-card .quote {
+        font-size: 1rem;
+    }
+    .testimonial-card .author {
+        font-size: 0.9rem;
+    }
+}
+/* Mobile devices */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 5px; /* Reduced margin for smaller screens */
+    }
+    header .cart-icon {
+        position: absolute; /* Example: move cart icon for small screens */
+        top: 15px;
+        right: 15px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch; /* Make input and select full width */
+    }
+
+    .controls input[type="text"],
+    .controls select {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px; /* Add space between stacked controls */
+    }
+    .controls select {
+        margin-bottom: 0; /* No margin for the last element */
+    }
+
+
+    #food-items {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+        padding: 10px;
+    }
+
+    .food-item-card {
+        padding: 10px;
+    }
+
+    .food-item-card img {
+        height: 180px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        width: 100%;
+        height: 150px; /* Adjust image height for stacked layout */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-info {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-controls {
+        width: 100%;
+        justify-content: space-between; /* Space out controls */
+    }
+
+    .cart-item-controls input[type="number"] {
+        margin: 0 5px; /* Adjust margins */
+    }
+
+    #cart-summary {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #cart-summary h2 {
+        font-size: 1.5rem;
+    }
+
+    #cart-summary p {
+        font-size: 1rem;
+    }
+
+    /* Adjust general font sizes for smaller screens */
+    :root {
+        --font-size-base: 14px;
+        --font-size-h1: 2rem; /* Adjusted from 2.5rem */
+        --font-size-h2: 1.75rem; /* Adjusted from 2rem */
+        --font-size-h3: 1.25rem; /* Adjusted from 1.5rem */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    header .cart-icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .food-item-card .description {
+        font-size: 0.85rem;
+    }
+
+    .food-item-card .price {
+        font-size: 1rem;
+    }
+
+    .food-item-card .add-to-cart-btn {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .cart-item-info h3 {
+        font-size: 1.1rem;
+    }
+    .cart-item-info .price {
+        font-size: 0.9rem;
+    }
+    .cart-item-controls .remove-btn {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+    #cart-summary #checkout {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}

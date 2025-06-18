@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louiss</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Louiss</h1>
+        <div class="cart-icon">
+            <a href="cart.html">
+                <img src="images/cart.png" alt="Cart">
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+    <section class="controls">
+        <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
+        <select id="filter" aria-label="Filter food items by category">
+            <option value="all">All</option>
+            <option value="pizza">Pizza</option>
+            <option value="burger">Burger</option>
+            <option value="sushi">Sushi</option>
+        </select>
+    </section>
+    <main id="food-items">
+        <!-- Food items will be displayed here -->
+    </main>
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"This is the best food delivery service I've ever used! The Margherita Pizza was fantastic."</p>
+                    <p class="author">- Alex P.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Quick delivery and the food (Cheeseburger) was still hot and delicious. Highly recommend!"</p>
+                    <p class="author">- Maria S.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Amazing sushi platter! Fresh and beautifully presented. Will order again soon."</p>
+                    <p class="author">- Kenji T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Food Delivery</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -88,7 +88,7 @@ body.dark-mode {
 #restaurant-details {
     display: flex;
     align-items: center;
-    justify-content: center; /* Distributes space between paragraph and logo */
+    justify-content: space-between; /* Distributes space between paragraph and logo */
     padding: 20px;
     margin-bottom: 20px;
     background-color: var(--card-background);
@@ -99,14 +99,13 @@ body.dark-mode {
 
 #restaurant-details p {
     flex-grow: 1; /* Allows paragraph to take available space */
-    max-width: 50%; /* Limits paragraph width */
-    margin-right: 0px; /* Space between paragraph and logo */
-    line-height: 1.5; /* Improve readability */
-    font-size: 22.5px;
+    max-width: 70%; /* Limits paragraph width */
+    margin-right: 20px; /* Space between paragraph and logo */
+    line-height: 1.6; /* Improve readability */
 }
 
 #restaurant-logo {
-    max-height: 250px; /* Max height for the logo */
+    max-height: 50px; /* Max height for the logo */
     width: auto; /* Maintain aspect ratio */
     flex-shrink: 0; /* Prevent logo from shrinking if space is tight */
 }
@@ -118,8 +117,12 @@ body.dark-mode {
 
 /* Header */
 header {
-    background: var(--primary-color);
-    color: var(--light-color);
+    /* background: var(--primary-color); Changed to card background */
+    background-color: var(--card-background); /* Card-like background */
+    /* color: var(--light-color); Changed to text color for card background */
+    color: var(--text-color); /* Text color for card background */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Card-like shadow */
+    border-radius: 8px; /* Rounded corners for card */
     /* padding: 1rem 0; Combined below */
     text-align: center; /* Flex properties will override most of this for direct children */
     position: sticky;
@@ -152,6 +155,8 @@ header {
 header h1 {
     font-size: var(--font-size-h1);
     font-family: var(--font-family-secondary);
+    /* color: var(--primary-color); /* Example: if H1 needs specific color due to header text color change */
+                                   /* Let's see how it inherits first. var(--text-color) should be fine. */
 }
 
 .header-controls {
@@ -160,10 +165,55 @@ header h1 {
     gap: 15px; /* Adds space between cart icon and dark mode toggle */
 }
 
+/* Cart Icon specific styling for badge */
+.cart-icon {
+    position: relative;
+    /* display: inline-block; /* Replaced by flex for centering content */
+    display: flex; /* For centering the image if padding is added */
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color); /* Subtle background */
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Add a hover effect for .cart-icon */
+.cart-icon:hover {
+    background-color: var(--primary-color); /* Example: use primary color on hover */
+    /* Or a slightly lighter/darker version of its normal background */
+    /* background-color: #e0e0e0; /* Example for light mode */
+}
+/* body.dark-mode .cart-icon:hover {
+    background-color: #333; /* Example for dark mode */
+/* } */
+
+
 header .cart-icon img {
     width: 30px;
     height: 30px;
+    display: block; /* Prevents extra space below image */
 }
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    padding: 3px 6px; /* Adjusted padding slightly for better circular appearance with text */
+    font-size: 0.75rem;
+    font-weight: bold;
+    min-width: 20px; /* Adjusted for slightly larger padding/text */
+    height: 20px; /* Ensure height matches min-width for circle */
+    line-height: 14px; /* Adjust for vertical centering of text in the circle */
+    text-align: center;
+    border: 1px solid var(--light-color); /* Pop against icon */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
 
 #dark-mode-toggle {
     background: var(--primary-color); /* Match header background */

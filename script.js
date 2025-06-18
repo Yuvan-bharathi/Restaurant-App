@@ -387,14 +387,16 @@ function renderCartItems(currentCart) {
         // Quantity input is readonly; +/- buttons control its value.
         itemElement.innerHTML = `
             <img src="${item.image}" alt="${item.name}">
-            <div class="cart-item-info">
-                <h3>${item.name}</h3>
-                <p class="price">$${item.price.toFixed(2)}</p>
-            </div>
-            <div class="cart-item-controls">
-                <button class="quantity-btn decrease-qty" data-id="${item.id}">-</button>
-                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}" readonly>
-                <button class="quantity-btn increase-qty" data-id="${item.id}">+</button>
+            <div class="cart-item-details-stacked">
+                <div class="cart-item-info">
+                    <h3>${item.name}</h3>
+                    <p class="price">$${item.price.toFixed(2)}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <button class="quantity-btn decrease-qty" data-id="${item.id}">-</button>
+                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}" readonly>
+                    <button class="quantity-btn increase-qty" data-id="${item.id}">+</button>
+                </div>
                 <button class="remove-btn" data-id="${item.id}">Remove</button>
             </div>
         `;

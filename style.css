@@ -704,16 +704,17 @@ footer {
     margin: 20px auto; /* Center it */
 }
 
-/* Individual Cart Item Styling */
+/* Individual Cart Item Styling (Old styles - commented out) */
+/*
 .cart-item {
     background-color: var(--card-background, #fff);
-    border: 1px solid var(--secondary-color, #ddd); /* Using secondary as border for now */
+    border: 1px solid var(--secondary-color, #ddd);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: wrap;
     align-items: center;
     gap: 15px;
 }
@@ -723,34 +724,33 @@ footer {
     height: 80px;
     object-fit: cover;
     border-radius: 6px;
-    margin-right: 15px; /* Kept for when not wrapped */
+    margin-right: 15px;
 }
 
 .cart-item-info {
-    flex-grow: 1; /* Takes available space */
-    min-width: 200px; /* Minimum width before wrapping or shrinking too much */
+    flex-grow: 1;
+    min-width: 200px;
 }
 
 .cart-item-info h3 {
-    font-size: 1.2rem; /* var(--font-size-h3) might be too big here */
+    font-size: 1.2rem;
     color: var(--primary-color);
     margin-bottom: 5px;
 }
 
 .cart-item-info .price {
     font-size: 1rem;
-    color: var(--text-color); /* Changed from secondary-color for better contrast if card bg is light */
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
-/* Cart Item Controls */
 .cart-item-controls {
     display: flex;
     align-items: center;
     gap: 8px;
-    min-width: 220px; /* Ensure controls have enough space */
-    justify-content: flex-end; /* Align to the right within its flex space */
-    flex-grow: 1; /* Allow it to take space on larger screens */
+    min-width: 220px;
+    justify-content: flex-end;
+    flex-grow: 1;
 }
 
 .cart-item-controls .quantity-btn {
@@ -768,7 +768,7 @@ footer {
     background-color: var(--primary-color);
 }
 
-.cart-item-controls .quantity-input { /* Class from script.js */
+.cart-item-controls .quantity-input {
     width: 40px;
     padding: 5px;
     text-align: center;
@@ -777,9 +777,8 @@ footer {
     font-size: 1rem;
 }
 
-/* Remove button styling */
 .cart-item-controls .remove-btn {
-    background-color: #e74c3c; /* Distinct remove color */
+    background-color: #e74c3c;
     color: var(--light-color);
     border: none;
     padding: 8px 12px;
@@ -787,27 +786,29 @@ footer {
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
-    margin-left: 10px; /* Space from quantity controls */
+    margin-left: 10px;
 }
 
 .cart-item-controls .remove-btn:hover {
     background-color: #c0392b;
 }
+*/
 
-/* Cart Summary Section */
+/* Cart Summary Section (Old styles - commented out) */
+/*
 #cart-summary {
     background-color: var(--card-background, #fff);
     border: 1px solid var(--secondary-color, #ddd);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    max-width: 500px; /* Max width for the summary box */
-    margin: 20px auto; /* Center it */
+    max-width: 500px;
+    margin: 20px auto;
 }
 
 #cart-summary h2 {
     text-align: center;
-    font-size: var(--font-size-h2, 2rem); /* Use h2 variable */
+    font-size: var(--font-size-h2, 2rem);
     color: var(--primary-color);
     margin-bottom: 20px;
 }
@@ -820,12 +821,12 @@ footer {
     color: var(--text-color);
 }
 
-#cart-summary p strong { /* For the total line */
-    color: var(--primary-color); /* Emphasize total */
+#cart-summary p strong {
+    color: var(--primary-color);
 }
 
-#checkout.button { /* Targeting the button with id checkout and class button */
-    display: block; /* Make it full width within its container */
+#checkout.button {
+    display: block;
     width: 100%;
     background-color: var(--primary-color);
     color: var(--light-color);
@@ -843,6 +844,7 @@ footer {
 #checkout.button:hover {
     background-color: var(--button-hover-color);
 }
+*/
 
 /* Empty Cart Message */
 .empty-cart-message { /* Class from script.js */
@@ -890,4 +892,270 @@ footer {
         justify-content: center; /* Center controls when stacked */
         margin-top:10px;
     }
+}
+
+/* Cart Summary Section - Refined Styles */
+#cart-summary {
+    background-color: var(--card-background, #fff);
+    border: 1px solid #e0e0e0; /* Lighter border */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* Softer shadow */
+    max-width: 550px;
+    margin: 30px auto;
+}
+
+#cart-summary h2 {
+    text-align: center;
+    font-size: var(--font-size-h2, 2rem);
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+#cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+#cart-summary p span { /* Targeting the spans holding values */
+    font-weight: 500;
+}
+
+#cart-summary p strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+#checkout.button { /* This selector was from cart.html <button id="checkout" class="button"> */
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 25px;
+}
+
+#checkout.button:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Cart Item Card Redesign */
+.cart-item {
+    background-color: var(--card-background, #fff);
+    border: 1px solid #e0e0e0; /* Lighter border for a cleaner look */
+    border-radius: 8px;
+    padding: 20px; /* Slightly more padding */
+    margin: 0 auto 20px auto; /* Center the card and add bottom margin */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* Softer shadow */
+    display: flex; /* Main layout: image left, details right */
+    gap: 20px; /* Space between image and details block */
+    max-width: 700px; /* Control horizontal stretching */
+    align-items: flex-start; /* Align items to the top */
+}
+
+/* Image styling within .cart-item */
+.cart-item img {
+    width: 120px; /* Slightly larger image */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+    /* margin-right: 0; /* gap handles spacing now */
+}
+
+.cart-item-details-stacked {
+    display: flex;
+    flex-direction: column; /* Stack details vertically */
+    flex-grow: 1; /* Take remaining space */
+    gap: 10px; /* Space between stacked items */
+}
+
+.cart-item-info {
+    /* No specific flex/layout properties needed if it's just a simple child now */
+    /* min-width and flex-grow removed as parent .cart-item-details-stacked handles flex */
+}
+
+.cart-item-info h3 { /* Item Name */
+    font-size: 1.3rem; /* Slightly larger */
+    color: var(--text-color); /* Standard text color, not primary */
+    margin: 0 0 5px 0; /* Adjust margin */
+    font-weight: 600; /* Slightly bolder */
+}
+
+.cart-item-info .price {
+    font-size: 1.1rem; /* Slightly larger */
+    color: var(--primary-color); /* Price in primary color */
+    margin: 0 0 10px 0; /* Margin below price */
+    font-weight: bold;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Remove min-width, justify-content, flex-grow from previous style as it's now stacked */
+}
+
+.cart-item-controls .quantity-btn {
+    background-color: var(--light-color); /* Lighter buttons */
+    color: var(--text-color);
+    border: 1px solid #ccc; /* Add border */
+    padding: 5px 10px; /* Adjust padding */
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.cart-item-controls .quantity-btn:hover {
+    background-color: #f0f0f0; /* Slight hover for light buttons */
+    border-color: #bbb;
+}
+
+.cart-item-controls .quantity-input {
+    width: 35px; /* Slightly smaller */
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Remove button, will be a child of .cart-item-details-stacked */
+.remove-btn { /* This is a class on the button itself */
+    background-color: transparent; /* Make it look more like a link/text button */
+    color: #e74c3c; /* Keep the remove color for text */
+    border: none;
+    padding: 8px 0; /* Vertical padding, no horizontal */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left; /* Align to left if it takes full width of its parent in stack */
+    transition: color 0.3s ease;
+    margin-top: 5px; /* Space above remove button */
+    /* margin-left: 0; /* Removed from previous .cart-item-controls .remove-btn */
+}
+
+.remove-btn:hover {
+    color: #c0392b; /* Darken text on hover */
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for .cart-item */
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column; /* Stack image and details block */
+        align-items: center; /* Center items when stacked */
+        max-width: 95%; /* Allow a bit wider on small screens */
+        padding: 15px;
+    }
+
+    .cart-item img {
+        width: 150px; /* Larger image when stacked */
+        height: 150px;
+        margin-bottom: 15px; /* Space below image */
+    }
+
+    .cart-item-details-stacked {
+        align-items: center; /* Center details when stacked below image */
+        text-align: center; /* Center text of children */
+        width:100%;
+    }
+
+    .cart-item-controls {
+        justify-content: center; /* Center quantity controls */
+    }
+
+    .remove-btn {
+        text-align: center; /* Center remove button text */
+    }
+}
+
+/* Styles for the header on cart.html */
+/* Assumes cart.html header will have id="cart-specific-header" */
+#cart-specific-header {
+    display: flex;
+    justify-content: center; /* Center children horizontally */
+    align-items: center; /* Align children vertically */
+    padding: 20px; /* Standard padding */
+    background-color: var(--card-background); /* Consistent background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin-bottom: 30px; /* Space below header */
+    border-radius: 0 0 8px 8px; /* Optional: if it's a sticky-like top bar */
+    gap: 20px; /* Space between title and cart icon group */
+}
+
+#cart-specific-header h1 {
+    font-size: var(--font-size-h1, 2.5rem); /* Use variable */
+    color: var(--primary-color);
+    margin: 0; /* Remove default margin */
+}
+
+#cart-specific-header .cart-icon {
+    display: flex; /* To align image and count if they were not already */
+    align-items: center;
+    /* position: relative; /* Should be inherited from global .cart-icon for badge */
+}
+
+#cart-specific-header .cart-icon img {
+    width: 30px; /* Adjust as needed */
+    height: 30px;
+    /* margin-right: 5px; /* Space between icon and count, if count is not a badge */
+                       /* Global .cart-icon does not have margin-right on img */
+}
+
+/* Re-affirming badge style for cart count if it's NOT using global badge style, */
+/* or if it needs override. The global badge should ideally apply. */
+/* This example makes it look more like a chip than an overlapping badge. */
+#cart-specific-header #cart-count {
+    font-size: 0.9rem; /* Example if it's not using the small corner badge style */
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 3px 8px;
+    border-radius: 10px; /* Pill shape */
+    margin-left: 5px; /* If it's inline next to icon image */
+
+    /* To use the global badge style (absolute positioned top-right), ensure:
+       1. #cart-specific-header .cart-icon has position: relative (global .cart-icon should have this)
+       2. The global #cart-count styles for absolute positioning, size, etc., are desired.
+       If this #cart-count here is meant to be simpler (e.g. not overlapping), these styles are fine.
+       If it's meant to be the same badge as in the main navbar, remove these specific #cart-count styles
+       for #cart-specific-header context and ensure .cart-icon within this header has position:relative.
+    */
+    /* Forcing it to look like the global badge for consistency: */
+    position: absolute;
+    top: -5px; /* Adjust based on .cart-icon padding if any, or visual preference */
+    right: -5px; /* Adjust based on .cart-icon padding if any, or visual preference */
+    /* background-color: var(--primary-color); /* Already set */
+    /* color: var(--light-color); /* Already set */
+    border-radius: 50%; /* For circle */
+    padding: 2px 5px; /* Small padding for small text */
+    font-size: 0.7rem; /* Tiny text for badge */
+    /* min-width, height, line-height might be needed from global badge style */
+}
+
+/* Cart Page Simple Footer Styling */
+/* Assumes <body class="cart-page-body"> is added to cart.html */
+.cart-page-body footer {
+    text-align: center;
+    padding: 25px 20px; /* Increased padding */
+    background-color: var(--footer-background, #333);
+    color: var(--footer-text-color, #fff);
+    margin-top: 40px; /* Consistent with main footer margin-top */
+    border-top: 1px solid var(--secondary-color, #555); /* Optional top border */
+}
+
+.cart-page-body footer p {
+    font-size: 0.9rem;
+    margin: 0; /* Reset default paragraph margin */
 }

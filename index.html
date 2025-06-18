@@ -9,6 +9,15 @@
 <body>
     <header>
         <h1>Louiss</h1>
+        <section class="controls">
+            <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
+            <select id="filter" aria-label="Filter food items by category">
+                <option value="all">All</option>
+                <option value="pizza">Pizza</option>
+                <option value="burger">Burger</option>
+                <option value="sushi">Sushi</option>
+            </select>
+        </section>
         <div class="header-controls">
             <div class="cart-icon">
                 <a href="cart.html">
@@ -22,15 +31,7 @@
     <div class="app-wrapper">
         <section id="restaurant-details">
             <p>Louiss is a family-owned restaurant that has been serving delicious food for over 20 years. We are passionate about using fresh, locally-sourced ingredients to create memorable dining experiences.</p>
-        </section>
-        <section class="controls">
-            <input type="text" id="search" placeholder="Search food..." aria-label="Search for food items">
-            <select id="filter" aria-label="Filter food items by category">
-                <option value="all">All</option>
-                <option value="pizza">Pizza</option>
-                <option value="burger">Burger</option>
-                <option value="sushi">Sushi</option>
-            </select>
+            <img src="images/cart.png" alt="Restaurant Logo" id="restaurant-logo">
         </section>
         <main id="food-items">
             <!-- Food items will be displayed here -->

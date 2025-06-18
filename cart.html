@@ -7,28 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="cart-page-body">
-    <header id="cart-specific-header">
-        <h1>Shopping Cart</h1>
-        <div class="cart-icon">
-            <a href="cart.html"> <!-- Or back to index.html -->
-                <img src="images/cart.png" alt="Cart">
-                <span id="cart-count">0</span>
-            </a>
-        </div>
-    </header>
-    <main id="cart-items">
-        <!-- Cart items will be displayed here -->
-    </main>
-    <section id="cart-summary">
-        <h2>Cart Summary</h2>
-        <p>Subtotal: $<span id="subtotal-val">0.00</span></p>
-        <p>Tax (5%): $<span id="tax-val">0.00</span></p>
-        <p><strong>Total: $<span id="final-total-val">0.00</span></strong></p>
-        <button id="checkout" class="button">Checkout</button>
-    </section>
-    <footer>
-        <p>&copy; 2025 Food Delivery</p>
-    </footer>
+    <div id="app-wrapper">
+        <header id="cart-specific-header">
+            <h1>Shopping Cart</h1>
+            <div class="cart-icon">
+                <a href="cart.html"> <!-- Or back to index.html -->
+                    <img src="images/cart.png" alt="Cart">
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+        </header>
+        <main id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </main>
+        <section id="cart-summary">
+            <h2>Cart Summary</h2>
+            <p>Subtotal: $<span id="subtotal-val">0.00</span></p>
+            <p>Tax (5%): $<span id="tax-val">0.00</span></p>
+            <p><strong>Total: $<span id="final-total-val">0.00</span></strong></p>
+            <button id="checkout" class="button">Checkout</button>
+        </section>
+        <footer>
+            <p>&copy; 2025 Food Delivery</p>
+        </footer>
+    </div> <!-- Closing app-wrapper -->
     <script src="script.js"></script>
 </body>
 </html>

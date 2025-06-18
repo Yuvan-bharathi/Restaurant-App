@@ -73,6 +73,14 @@ body.dark-mode {
     padding: 0 20px;
 }
 
+.app-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+    /* Padding is intentionally omitted here. Sections within the wrapper
+       can use .container for padding and narrower content width, or
+       span the full width of .app-wrapper if desired (e.g., for backgrounds). */
+}
+
 /* =====================================================================================
    HEADER & NAVIGATION
    ===================================================================================== */
@@ -98,6 +106,12 @@ header h1 {
     font-family: var(--font-family-secondary);
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adds space between cart icon and dark mode toggle */
+}
+
 header .cart-icon img {
     width: 30px;
     height: 30px;
@@ -112,7 +126,7 @@ header .cart-icon img {
     border-radius: 20px; /* Rounded button */
     font-size: 1.2rem; /* Emoji size */
     line-height: 1;
-    margin-left: 15px; /* Space from cart icon */
+    /* margin-left: 15px; /* Space from cart icon - now handled by gap in .header-controls */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -234,9 +248,11 @@ button:hover, .button:hover {
 /* Food Items Grid / List */
 #food-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(4, 1fr); /* 4x4 grid */
     gap: 20px;
     padding: 20px; /* Padding around the grid */
+    max-width: 1200px; /* Max width for the grid */
+    margin: auto; /* Center the grid */
 }
 
 .food-item-card {
@@ -567,10 +583,30 @@ body.dark-mode .cart-item-controls input[type="number"] {
         margin-bottom: 5px; /* Reduced margin for smaller screens */
     }
     header .cart-icon {
-        position: absolute; /* Example: move cart icon for small screens */
-        top: 15px;
-        right: 15px;
+        /* position: absolute; Example: move cart icon for small screens */
+        /* top: 15px; */
+        /* right: 15px; */
+        /* The above styles are problematic with the new flex layout for header-controls.
+           The header itself becomes flex-direction: column, so absolute positioning here
+           might be relative to the h1 if not careful.
+           Let's rely on the natural flow within .header-controls or adjust .header-controls itself.
+        */
     }
+    /* Adjust header for small screens to ensure .header-controls also behaves well */
+    header {
+        flex-direction: column;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    header h1 {
+        margin-bottom: 10px; /* Add some space between title and controls div */
+    }
+    .header-controls {
+        /* Ensure it doesn't shrink and items stay aligned */
+        width: 100%;
+        justify-content: flex-end; /* Pushes items to the right if header is full width */
+    }
+
 
     .controls {
         flex-direction: column;
